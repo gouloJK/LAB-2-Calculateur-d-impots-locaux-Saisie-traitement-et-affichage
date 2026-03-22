@@ -38,13 +38,18 @@ public class MainActivity extends AppCompatActivity {
         int rooms = Integer.parseInt(etRooms.getText().toString());
         boolean hasSwimmingPool = cbSwimmingPool.isChecked();
 
-
         // Tax calculation
         double baseTax = area * 2;
-        double additionalTax = rooms * 50 + (hasSwimmingPool ? 100 : 0);
-        double totalTax = baseTax + additionalTax;
+        double roomsTax = rooms * 50;
+        double poolTax = hasSwimmingPool ? 100 : 0;
+        double supplementaryTax = roomsTax + poolTax;
+        double totalTax = baseTax + supplementaryTax;
 
         // Display result
-        tvResult.setText("Total Tax: " + totalTax + " DH");
+        String result = "Base Tax: " + baseTax + " DH\n" +
+                "Supplementary Tax: " + supplementaryTax + " DH\n" +
+                "Total Tax: " + totalTax + " DH";
+
+        tvResult.setText(result);
     }
 }
